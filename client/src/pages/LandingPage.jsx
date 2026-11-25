@@ -26,7 +26,7 @@ export const LandingPage = () => {
   const [featuredDishes, setFeaturedDishes] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/menu')
+    fetch('/api/menu')
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => setFeaturedDishes(data.slice(0, 3)))
       .catch(() => {});

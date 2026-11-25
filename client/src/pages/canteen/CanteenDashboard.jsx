@@ -29,7 +29,7 @@ export const CanteenDashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const orderRes = await fetch('http://localhost:5000/api/orders/analytics/summary', {
+        const orderRes = await fetch('/api/orders/analytics/summary', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (orderRes.ok) {
@@ -37,7 +37,7 @@ export const CanteenDashboard = () => {
           setStats(orderData);
         }
 
-        const wasteRes = await fetch('http://localhost:5000/api/waste', {
+        const wasteRes = await fetch('/api/waste', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (wasteRes.ok) {
@@ -45,7 +45,7 @@ export const CanteenDashboard = () => {
           setTotalWaste(wasteData.totalWasteKg || 0);
         }
 
-        const invRes = await fetch('http://localhost:5000/api/inventory', {
+        const invRes = await fetch('/api/inventory', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (invRes.ok) {
@@ -53,7 +53,7 @@ export const CanteenDashboard = () => {
           setLowStockCount(invData.lowStockCount || 0);
         }
 
-        const intelRes = await fetch('http://localhost:5000/api/waste/analytics/intelligence', {
+        const intelRes = await fetch('/api/waste/analytics/intelligence', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (intelRes.ok) {

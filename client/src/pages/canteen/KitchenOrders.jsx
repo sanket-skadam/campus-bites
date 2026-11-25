@@ -14,8 +14,8 @@ export const KitchenOrders = () => {
   const fetchOrders = async (silent = false) => {
     try {
       const url = activeTab === 'All'
-        ? 'http://localhost:5000/api/orders'
-        : `http://localhost:5000/api/orders?status=${encodeURIComponent(activeTab)}`;
+        ? '/api/orders'
+        : `/api/orders?status=${encodeURIComponent(activeTab)}`;
       const res = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -40,7 +40,7 @@ export const KitchenOrders = () => {
 
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      const res = await fetch(`/api/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

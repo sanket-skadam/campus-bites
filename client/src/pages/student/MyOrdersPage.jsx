@@ -10,7 +10,7 @@ export const MyOrdersPage = () => {
 
   const fetchMyOrders = async (silent = false) => {
     try {
-      const res = await fetch('http://localhost:5000/api/orders/my', {
+      const res = await fetch('/api/orders/my', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -36,7 +36,7 @@ export const MyOrdersPage = () => {
     if (!window.confirm('Are you sure you want to cancel this order?')) return;
     setCancellingId(orderId);
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}/cancel`, {
+      const res = await fetch(`/api/orders/${orderId}/cancel`, {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` }
       });

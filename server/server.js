@@ -15,6 +15,12 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Ensure DB connection on serverless cold starts
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
+
 // Mount Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/menu', require('./routes/menu'));
@@ -47,7 +53,11 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`[Server] Smart Canteen backend listening on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`[Server] Smart Canteen backend listening on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
 

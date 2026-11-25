@@ -38,7 +38,7 @@ export const CartPage = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/orders/slots/availability');
+        const res = await fetch('/api/orders/slots/availability');
         if (res.ok) {
           const data = await res.json();
           setSlotAvailability(data);
@@ -80,7 +80,7 @@ export const CartPage = () => {
         paymentMethod
       };
 
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

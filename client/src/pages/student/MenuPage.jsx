@@ -15,7 +15,7 @@ export const MenuPage = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/menu');
+        const res = await fetch('/api/menu');
         if (res.ok) {
           const data = await res.json();
           setItems(data);

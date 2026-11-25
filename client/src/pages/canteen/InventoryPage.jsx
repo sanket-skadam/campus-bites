@@ -20,7 +20,7 @@ export const InventoryPage = () => {
 
   const fetchInventory = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/inventory', {
+      const res = await fetch('/api/inventory', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -42,7 +42,7 @@ export const InventoryPage = () => {
   const handleAddIngredient = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/inventory', {
+      const res = await fetch('/api/inventory', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const InventoryPage = () => {
   const handleUpdateStock = async (id, currentStock, delta) => {
     const updatedStock = Math.max(0, currentStock + delta);
     try {
-      const res = await fetch(`http://localhost:5000/api/inventory/${id}`, {
+      const res = await fetch(`/api/inventory/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export const InventoryPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this ingredient from inventory records?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/inventory/${id}`, {
+      const res = await fetch(`/api/inventory/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

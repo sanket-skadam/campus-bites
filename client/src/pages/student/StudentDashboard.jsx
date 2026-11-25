@@ -12,7 +12,7 @@ export const StudentDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const orderRes = await fetch('http://localhost:5000/api/orders/my', {
+        const orderRes = await fetch('/api/orders/my', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (orderRes.ok) {
@@ -20,7 +20,7 @@ export const StudentDashboard = () => {
           if (orders.length > 0) setRecentOrder(orders[0]);
         }
 
-        const menuRes = await fetch('http://localhost:5000/api/menu');
+        const menuRes = await fetch('/api/menu');
         if (menuRes.ok) {
           const items = await menuRes.json();
           setMenuHighlights(items.slice(0, 3));

@@ -23,7 +23,7 @@ export const WasteTracking = () => {
 
   const fetchWasteData = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/waste', {
+      const res = await fetch('/api/waste', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -41,7 +41,7 @@ export const WasteTracking = () => {
 
   const fetchMenuDishes = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/menu');
+      const res = await fetch('/api/menu');
       if (res.ok) {
         const data = await res.json();
         setMenuList(data || []);
@@ -60,7 +60,7 @@ export const WasteTracking = () => {
     e.preventDefault();
     setMsg('');
     try {
-      const res = await fetch('http://localhost:5000/api/waste', {
+      const res = await fetch('/api/waste', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

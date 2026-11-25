@@ -10,7 +10,7 @@ export const CanteenReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/feedback');
+        const res = await fetch('/api/feedback');
         if (res.ok) {
           const data = await res.json();
           setReviews(data.reviews || []);

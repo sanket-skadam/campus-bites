@@ -22,7 +22,7 @@ export const MenuManagement = () => {
 
   const fetchMenu = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/menu?all=true');
+      const res = await fetch('/api/menu?all=true');
       if (res.ok) {
         const data = await res.json();
         setItems(data);
@@ -41,7 +41,7 @@ export const MenuManagement = () => {
   const handleAddItem = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:5000/api/menu', {
+      const res = await fetch('/api/menu', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const MenuManagement = () => {
 
   const handleToggle = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/menu/${id}/toggle`, {
+      const res = await fetch(`/api/menu/${id}/toggle`, {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -87,7 +87,7 @@ export const MenuManagement = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this menu item?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/menu/${id}`, {
+      const res = await fetch(`/api/menu/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

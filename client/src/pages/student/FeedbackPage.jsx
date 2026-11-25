@@ -21,7 +21,7 @@ export const FeedbackPage = () => {
 
   const fetchFeedback = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/feedback');
+      const res = await fetch('/api/feedback');
       if (res.ok) {
         const data = await res.json();
         setReviews(data.reviews || []);
@@ -35,7 +35,7 @@ export const FeedbackPage = () => {
 
   useEffect(() => {
     fetchFeedback();
-    fetch('http://localhost:5000/api/menu')
+    fetch('/api/menu')
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => setMenuItems(data || []))
       .catch(() => {});
@@ -47,7 +47,7 @@ export const FeedbackPage = () => {
     setSuccessMsg('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/feedback', {
+      const res = await fetch('/api/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
