@@ -1,0 +1,36 @@
+# ===========================
+# Root .gitignore
+# ===========================
+
+# Node modules (in both client and server)
+node_modules/
+**/node_modules/
+
+# Environment variables — NEVER commit these
+server/.env
+.env
+.env.local
+.env.production
+
+# Build outputs
+client/dist/
+.dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Legacy / unused folders
+legacy_prototype_and_docs/
+
